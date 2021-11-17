@@ -1,0 +1,19 @@
+<table mat-table class="mat-elevation-z8">
+    <tr mat-header-cell>
+        <td mat-cell>First Name</td>
+        <td mat-cell>Last Name</td>
+        <td mat-cell>Age</td>
+        <td mat-cell>Gender</td>
+        <td mat-cell>Email</td>
+        <td mat-cell>Phone Number</td>
+    </tr>
+    <tr mat-header-cell *ngFor="let user of users">
+        <td mat-cell>{{user.firstName}}</td>
+        <td mat-cell>{{user.lastName}}</td>
+        <td mat-cell>{{user.age}}</td>
+        <td mat-cell>{{user.gender}}</td>
+        <td mat-cell>{{user.email}}</td>
+        <td mat-cell>{{user.phoneNumber}}</td>
+
+    </tr>
+</table>
