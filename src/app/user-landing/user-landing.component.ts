@@ -1,5 +1,8 @@
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { User } from '../models/user-model.component';
+import {map} from 'rxjs/operators'
+import { UserDataService } from '../user-data.service';
 
 @Component({
   selector: 'app-user-landing',
@@ -8,12 +11,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserLandingComponent implements OnInit {
 
-  constructor(private http: HttpClient) { }
- users:any
+  constructor(private userService: UserDataService) { }
+users: User[] = []
+
   ngOnInit(): void {
-    let response = this.http.get('http://localhost:8080/allUsers')
-    response.subscribe((data) => this.users = data)
-    response.subscribe((data)=>console.log(data))
+    this.userService.getAllUsers().subscribe((users: User[]) => {
+      this.users =users
+      console.log(this.users)
+    })
+
   }
 
 }
